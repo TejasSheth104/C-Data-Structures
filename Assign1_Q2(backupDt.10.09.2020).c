@@ -13,13 +13,16 @@
 // Then if you were to dequeue the patients to process them, they would come out in this order: Ford,
 // Bernard, Dolores, William, Teddy, Arnold.
 
+
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 #define MAX 10
 #define len 100
 
-int pri_queue[MAX];			// <integer array> stores MAximum MAX integers.
-char queue[MAX][len]; 		// <string array> stores Maximum MAX strings of len Characters each.
+// both as Integer arrays.
+int pri_queue[MAX];
+char queue[MAX][len]; 	// stores Maximum MAX strings of len Characters each.
 int front = -1, rear = -1;
 
 void insert_pri();
@@ -54,20 +57,23 @@ int main(){
 }
 
 void insert_pri(){
-	char name[len];				// <character array> stores a String of Maximum len characters.
+	char name[len]; 
 	int priority;
 	
-	printf("Enter Name to be Inserted - ");
-	scanf("%s", name);
+	printf("Enter Names to be Inserted - ");
+	scanf("%s", name); 
+//	gets(name);
 	printf("Enter Priority of Person Inserted - ");
 	scanf("%d", &priority);
 	
 	if (front == -1 && rear == -1)
 		front = rear = 0;
-	else if (front == 0 && rear == MAX - 1){
+	else if ((front == 0 && rear == MAX - 1) || front == rear + 1){
 		printf("\n\tQUEUE IS FULL.");
 		return;
 	}
+	else if (front != 0 && rear == MAX - 1)
+		rear = 0;
 	else
 		rear ++;
 
@@ -76,30 +82,69 @@ void insert_pri(){
 }
 
 void delete_highest_pri(){
-	int smallest, i, index = 0;
+	int smallest, index = 0;
+//	char val;
+	int i, j;
 	smallest = pri_queue[0];
 	
 	if (front == -1 && rear == -1){
 		printf("\n\tQUEUE IS EMPTY.\n");
 		return;
 	}
-	for (i = 1; i <= rear; i++){			// finds the smallest number(HighestPriority) and its Index.
+	for (i = 1; i <= rear; i++){
 		if (pri_queue[i] < smallest){
 			smallest = pri_queue[i];
 			index = i;
 		}
 	}
+//	val = queue[index];
+	// front > < rear conditions
+	// check every MAX.
 	printf("\nPerson with Highest Priority => %s, with Priority %d \n", queue + index, pri_queue[index]);
+//	for (j=0;j!='\0';j++){
+//		printf("%s", queue[index][j]);
+//	}
 
-	for (i = index; i <= rear; i++){		// sets val[n] = val[n+1]. 
-		strcpy(&queue[i][0], &queue[i+1][0]);
-		pri_queue[i] = pri_queue[i+1];
+	if (front > rear){
+		for (i = index; i < MAX - 1; i++){
+			strcpy(&queue[i][0], &queue[i+1][0]);
+			pri_queue[i] = pri_queue[i+1];
+		}
+		
+		strcpy(&queue[MAX-1][0], &queue[0][0]);			
+		
+		pri_queue[MAX-1] = pri_queue[0];
+//		for (i = index; i < MAX - 1; i++){
+		for (i = 0; i <= rear; i++){
+			strcpy(&queue[i][0], &queue[i+1][0]);
+			pri_queue[i] = pri_queue[i+1];
+		}
+		
+		if (rear == 0)
+			rear = MAX - 1;
+		else
+			rear--;
 	}
-	rear--;
-
-	if (front > rear)						// executes only after the last element is deleted.
+	else{
+//		for (i = index; i < MAX - 1; i++){
+		for (i = index; i <= rear; i++){
+//			for (j = 0; j < len; j++){    // while (queue[i][j] != '\0'{j++;}
+//				queue[i][j] = queue[i+1][j];
+//			}
+			strcpy(&queue[i][0], &queue[i+1][0]);
+			pri_queue[i] = pri_queue[i+1];
+		}
+		rear--;		
+	}
+	
+	if (front > rear)
 		front = rear = -1;
-
+//	else{
+//		if (front == MAX -1)
+//			front = 0;
+//		else
+//			front ++;
+//	}
 }
 
 void display_pri(){
@@ -107,8 +152,18 @@ void display_pri(){
 	if (front == -1 && rear == -1)
 		printf("\n\tQUEUE IS EMPTY.\n");
 	else{
-		for (i = front; i <= rear; i++){	// prints elements from front until rear.
-			printf("\n\t>>> %s,\t p-> %d", queue + i, pri_queue[i]);
+		if (front > rear){
+			for (i = front; i < MAX; i++){
+				printf("\n\t>>> %s,\t p-> %d", queue + i, pri_queue[i]);
+			}
+			for (i = 0; i <= rear; i++){
+				printf("\n\t>>> %s,\t p-> %d", queue + i, pri_queue[i]);
+			}
+		}
+		else{
+			for (i = front; i <= rear; i++){
+				printf("\n\t>>> %s,\t p-> %d", queue + i, pri_queue[i]);
+			}
 		}
 		printf("\n");
 	}	

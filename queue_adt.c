@@ -2,7 +2,7 @@
 
 #include<stdio.h>
 #include<conio.h>
-#define MAX 5
+#define MAX 3
 int queue[MAX];
 int front = -1, rear = -1;
 
@@ -20,7 +20,7 @@ int main(){
 	printf("\n4. Display the Queue ");
 	printf("\n5. Exit ");
 	do{
-		printf("\n\nEnter your Option -  ");
+		printf("\nEnter your Option -  ");
 		scanf("%d", &option);
 		switch(option){
 			case 1:

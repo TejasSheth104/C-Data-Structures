@@ -101,7 +101,7 @@ void delete_highest_pri(){
 			rear--;
 	}
 	else{
-		for (i = index; i < rear; i++){
+		for (i = index; i <= rear; i++){
 			queue[i] = queue[i+1];
 			pri_queue[i] = pri_queue[i+1];
 		}
@@ -111,7 +111,7 @@ void delete_highest_pri(){
 
 void display_pri(){
 	int i;
-	if (front == -1 && rear == -1); //|| front == rear)
+	if (front == -1 && rear == -1) //|| front == rear)
 		printf("\n\tQUEUE IS EMPTY.");
 	else{
 		if (front > rear){
