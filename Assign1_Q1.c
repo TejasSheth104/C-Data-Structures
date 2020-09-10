@@ -18,7 +18,7 @@ int main(){
 	gets(input);
 	strcpy(output, "");
 	reverse(input, output);
-	printf("Reverse of the Sentence -> \n\t");
+	printf("\nReverse of the Sentence -> \n\t");
 	puts(output);
 	return 0;
 }

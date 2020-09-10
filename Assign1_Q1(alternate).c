@@ -1,7 +1,8 @@
 // Write a C Program to Reverse the words in a sentence 
 // that has no punctuations other than letters and spaces.
 
-// DATA STRUCTURE used - STACK.
+// "REVERSE THE WORDS in a SENTENCE"
+// pendinggg...
 
 #include<stdio.h>
 #include<string.h>

@@ -20,7 +20,6 @@
 #define MAX 10
 #define len 100
 
-// both as Integer arrays.
 int pri_queue[MAX];
 char queue[MAX][len]; 	// stores Maximum MAX strings of len Characters each.
 int front = -1, rear = -1;

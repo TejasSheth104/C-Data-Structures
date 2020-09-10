@@ -10,8 +10,8 @@
 // "William" with priority 5
 // "Teddy" with priority 5
 // "Ford" with priority 2
-// Then if you were to dequeue the patients to process them, they would come out in this order: Ford,
-// Bernard, Dolores, William, Teddy, Arnold.
+// Then if you were to dequeue the patients to process them, they would come out in this order: 
+// - Ford, Bernard, Dolores, William, Teddy, Arnold.
 
 #include<stdio.h>
 #include<string.h>
@@ -29,9 +29,9 @@ void display_pri();
 int main(){
 	int option;
 	printf("\n\t ***** MAIN MENU *****");
-	printf("\n1. Insert an Element, with Priority ");
-	printf("\n2. Delete an Element of Highest Priority");
-	printf("\n3. Display the Queue ");
+	printf("\n1. Insert Patient, with Priority ");
+	printf("\n2. Dequeue a Patient of Highest Priority");
+	printf("\n3. Display the Patient Queue ");
 	printf("\n4. Exit ");
 	do{
 		printf("\nEnter your Option -  ");
