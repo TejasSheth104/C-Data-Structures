@@ -50,7 +50,7 @@ int main(){
 				printf("\nThank You, EXIT.");			
 		}
 	}while(option != 4);
-	return -1;
+	return 1;
 }
 
 void insert_pri(){
@@ -89,7 +89,7 @@ void delete_highest_pri(){
 			index = i;
 		}
 	}
-	printf("\nPerson with Highest Priority => %s, with Priority %d \n", queue + index, pri_queue[index]);
+	printf("\nPerson with Highest Priority => \"%s\", with Priority - %d \n", queue + index, pri_queue[index]);
 
 	for (i = index; i <= rear; i++){		// sets val[n] = val[n+1]. 
 		strcpy(&queue[i][0], &queue[i+1][0]);
