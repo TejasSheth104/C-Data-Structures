@@ -1,9 +1,7 @@
-// Priority Queue Implementation using Arrays.
+// Priority Queue Implementation using 2 different Arrays.
 
 #include<stdio.h>
 #include<stdlib.h>
-#include<conio.h>
-#include<ctype.h>
 #define MAX 10
 
 // both as Integer arrays.

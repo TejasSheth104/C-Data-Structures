@@ -58,7 +58,7 @@ void insert_pri(){
 	int priority;
 	
 	printf("Enter Name to be Inserted - ");
-	scanf("%s", name);
+	scanf("%s", &name);
 	printf("Enter Priority of Person Inserted - ");
 	scanf("%d", &priority);
 	

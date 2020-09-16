@@ -2,7 +2,6 @@
 // mask the disadvantage of Linear Queue
 
 #include<stdio.h>
-#include<conio.h>
 #define MAX 5
 int queue[MAX];
 int front = -1, rear = -1;
@@ -67,7 +66,7 @@ void deque(){
 		front = rear = -1;
 	else{
 		if (front == MAX - 1)
-			front == 0;
+			front = 0;
 		else
 			front ++;	
 	}
@@ -95,7 +94,7 @@ void display(){
 				printf("\t %d", queue[i]);
 		}
 		else{
-			for (i = front; i <= MAX; i++)
+			for (i = front; i < MAX; i++)
 				printf("\t %d", queue[i]);
 			for (i = 0; i <= rear; i++)
 				printf("\t %d", queue[i]);
