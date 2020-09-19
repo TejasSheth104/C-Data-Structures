@@ -15,12 +15,12 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX 3
-#define PRI 2
+#define MAX 10
+#define PRI 10
 
 char pqueue[PRI][MAX];
-int front[PRI] = {-1,-1}; 
-int rear[PRI] = {-1,-1};
+int front[PRI] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}; 
+int rear[PRI] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 
 void enqueue();
 void dequeue();
@@ -58,17 +58,17 @@ void enqueue(){
 	char init_name;
 	int priority, i;
 	
-	printf("Enter Name to be Inserted - ");
+	printf("\nEnter Name to be Inserted - ");
 	scanf(" %c", &init_name);
 	do{
-		printf("Enter Priority (1,2,3) of Person Inserted - ");
+		printf("Enter Priority of Person Inserted - ");
 		scanf("%d", &priority);
-		if (priority < 1 && priority > 3)
+		if (priority < 1 && priority > PRI)
 			printf("\tEnter Again - ");
-	}while(priority < 1 && priority > 3);
+	}while(priority < 1 && priority > PRI);
 	
 	if (front[priority-1] == 0 && rear[priority-1] == MAX-1){
-		printf("\n OVERFLOW ");
+		printf("\n\t OVERFLOW \n");
 		return;
 	}
 	else if (front[priority-1] == -1 && rear[priority-1] == -1)
@@ -77,37 +77,17 @@ void enqueue(){
 		rear[priority-1] = 0;
 	else
 		rear[priority-1] ++;
-
-//	for (i = 0; i < MAX; i++){
-//		if (pqueue[priority-1][i] == '\0'){
-//			pqueue[priority-1][i] = init_name;
-//			break;
-//		}
-//	}
 	pqueue[priority-1][rear[priority-1]] = init_name;
 }
 
 void dequeue(){
-	int row, col, flag = 0, i, count = 0;
-	int breakinnerloop = 0;
-	int breakloop = 1;
-	
-//	for(i = 0; i < PRI; i++){
-//		if (front[i] == -1 && rear[i] == -1)
-//			count ++;
-//		else
-//			break;
-//	}
-//	if (count == PRI){
-//		printf("\n QUEUE IS EMPTY ");
-//		return ;
-//	}
-	
+	int row, col, flag = 0, i;
+
 	for (row = 0;row < PRI; row++){
 		if (front[row] > rear[row]){
 			for (col = front[row]; col < MAX; col++){
 				if (pqueue[row][col] != '\0'){
-					printf("\nName With Highest Priority - %c", pqueue[row][front[row]]);
+					printf("\nName With Highest Priority - %c", pqueue[row][col]);
 					pqueue[row][col] = '\0';
 					circular(row);
 					flag = 1;
@@ -118,7 +98,7 @@ void dequeue(){
 				if (flag == 1)
 					break;
 				if (pqueue[row][col] != '\0'){
-					printf("Name With Highest Priority - %c", pqueue[row][col]);
+					printf("\nName With Highest Priority - %c", pqueue[row][col]);
 					pqueue[row][col] = '\0';
 					circular(row);
 					flag = 1;
@@ -127,9 +107,9 @@ void dequeue(){
 			}
 		}
 		else{
-			for (col = front[row]; col < rear[row]; col++){
+			for (col = front[row]; col <= rear[row]; col++){
 				if (pqueue[row][col] != '\0'){
-					printf("Name With Highest Priority - %c", pqueue[row][front[row]]);
+					printf("\nName With Highest Priority - %c", pqueue[row][front[row]]);
 					pqueue[row][col] = '\0';
 					circular(row);
 					flag = 1;					
@@ -140,9 +120,10 @@ void dequeue(){
 		
 		if (flag == 1)
 			break;
-		else if (row == PRI-1  flag == 0)
-			printf("Queue is empty\n");
+		else if (row == PRI-1 && flag == 0)
+			printf("\n\tQUEUE IS EMPTY\n");
 	}
+	printf("\n");
 }
 
 void circular(int row){
@@ -154,14 +135,13 @@ void circular(int row){
 		else
 			front[row] ++;	
 	}
-	printf("\n\nfront = %d\n\n", front[row]);
 }
+
 void display(){
 	int i, j;
-	printf("\n");
 	for (i = 0; i < PRI; i++){
 		if (front[i] == -1 && rear[i] == -1)
-			printf("\n Priority QUEUE %d is UNDERFLOW", i+1);
+			printf("\n Priority QUEUE %d - UNDERFLOW", i+1);
 		else{
 			printf("\n Priority QUEUE %d -", i+1);
 			if (front[i] <= rear[i]){
@@ -176,7 +156,6 @@ void display(){
 			}
 		}
 	}
+	printf("\n");
 }
-
-
 
