@@ -6,6 +6,7 @@
 
 struct node{
 	int data;
+	struct node *prev;
 	struct node *next;
 };
 
@@ -18,7 +19,7 @@ struct node *insert_after(struct node *);
 struct node *insert_before(struct node *);
 struct node *delete_beg(struct node *);
 struct node *delete_end(struct node *);
-struct node *delete_node(struct node *);
+struct node *delete_before(struct node *);
 struct node *delete_after(struct node *);
 struct node *delete_list(struct node *);
 struct node *sort_list(struct node *);
@@ -35,18 +36,17 @@ int main(){
 		printf("\n6. Add a Node after a given Node");
 		printf("\n7. Delete a Node from the beginning");
 		printf("\n8. Delete a Node from the end");
-		printf("\n9. Delete a given Node");
+		printf("\n9. Delete a Node before a given Node");
 		printf("\n10. Delete a Node after a given Node");
 		printf("\n11. Delete the entire List");
-		printf("\n12. Sort the List");
-		printf("\n13. EXIT");
+		printf("\n12. EXIT");
 		printf("\nEnter your Option - ");
 		scanf("%d", & option);
 		
 		switch(option){
 			case 1:
 				start = create_ll(start);
-				printf("\n Linked List Created");
+				printf("\n Doubly Linked List Created");
 				break;
 			case 2:
 				start = display(start);
@@ -70,20 +70,17 @@ int main(){
 				start = delete_end(start);
 				break;
 			case 9:
-				start = delete_node(start);
+				start = delete_before(start);
 				break;
 			case 10:
 				start = delete_after(start);
 				break;
 			case 11:
 				start = delete_list(start);
-				printf("\n Linked List Deleted");
-				break;
-			case 12:
-				start = sort_list(start);
+				printf("\n Doubly Linked List Deleted");
 				break;
 		}
-	}while (option != 13);
+	}while (option != 12);
 	return 0;
 }
 
@@ -97,6 +94,7 @@ struct node *create_ll(struct node *start){
 		new_node = (struct node*)malloc(sizeof(struct node));
 		new_node->data = num;
 		if (start == NULL){
+			new_node->prev = NULL;
 			new_node->next = NULL;
 			start = new_node;
 		}
@@ -106,6 +104,7 @@ struct node *create_ll(struct node *start){
 				ptr = ptr->next;
 			}
 			ptr->next = new_node;
+			new_node->prev = ptr;
 			new_node->next = NULL;
 		}
 		printf("\n Enter the data - ");
@@ -192,7 +191,7 @@ struct node *insert_after(struct node *start){
 	return start;
 }
 
-struct node *delete_node(struct node *start){
+struct node *delete_before(struct node *start){
 	struct node *ptr, *preptr;
 	int val, temp;
 	printf("\nEnter the Value of the Node which has to be deleted - ");
