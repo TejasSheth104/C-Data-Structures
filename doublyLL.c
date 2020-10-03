@@ -1,4 +1,4 @@
-// Singly Linked List
+// Doubly Linked List
 
 #include<stdio.h>
 #include<malloc.h>
@@ -225,7 +225,7 @@ struct node *delete_after(struct node *start){
 	}
 	temp = ptr->next;
 	ptr->next = temp->next;
-	temp->next->prev = ptr
+	temp->next->prev = ptr;
 	free(temp);
 	return start;
 }
