@@ -4,16 +4,17 @@
 #include<stdlib.h>
 #include<malloc.h>
 
-struct node{
+struct stack{
 	int data;
-	struct node *next;
+	struct stack *next;
 };
 
-struct node *top = NULL;
-struct node *push(struct node *);
-struct node *pop(struct node *);
-struct node *display(struct node *);
-void peek(struct node *);
+struct stack *top = NULL;
+struct stack *push(struct stack *);
+void peek(struct stack *);
+struct stack *pop(struct stack *);
+struct stack *display(struct stack *);
+
 
 int main(){
 	int option;
@@ -45,26 +46,26 @@ int main(){
 	return 0;
 }
 
-struct node *push(struct node *top){
-	struct node *new_node;
+struct stack *push(struct stack *top){
+	struct stack *ptr;
 	int num;
 	printf("\nEnter the data - ");
 	scanf("%d", &num);
-	new_node = (struct node *)malloc(sizeof(struct node *));
-	new_node->data = num;
+	ptr = (struct stack *)malloc(sizeof(struct stack *));
+	ptr->data = num;
 	if (top == NULL){
-		new_node->next = NULL;
-		top = new_node;
+		ptr->next = NULL;
+		top = ptr;
 	}
 	else{
-		new_node->next = top;
-		top = new_node;
+		ptr->next = top;
+		top = ptr;
 	}
 	return top;
 }
 
-struct node *pop(struct node *top){
-	struct node *temp;
+struct stack *pop(struct stack *top){
+	struct stack *temp;
 	if (top == NULL)
 		printf("\tSTACK UNDERFLOW.\n");
 	else{
@@ -76,15 +77,15 @@ struct node *pop(struct node *top){
 	return top;		
 }
 
-void peek(struct node *top){
+void peek(struct stack *top){
 	if (top == NULL)
 		printf("\tSTACK UNDERFLOW.\n");
 	else
 		printf("\nElement at Top of Stack is %d.\n", top->data);
 }
 
-struct node *display(struct node *top){
-	struct node *ptr;
+struct stack *display(struct stack *top){
+	struct stack *ptr;
 	if (top == NULL)
 		printf("\tSTACK UNDERFLOW.\n");
 	else{
