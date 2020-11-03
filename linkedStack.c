@@ -15,7 +15,6 @@ void peek(struct stack *);
 struct stack *pop(struct stack *);
 struct stack *display(struct stack *);
 
-
 int main(){
 	int option;
 	do{

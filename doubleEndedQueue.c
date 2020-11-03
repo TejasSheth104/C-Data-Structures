@@ -119,7 +119,7 @@ void insert_left(){
 		if (left == 0)
 			left = MAX - 1;
 		else
-			left ++;
+			left --;
 	}
 	deque[left] = num;
 }
@@ -149,10 +149,10 @@ void delete_right(){
 	if (left == right)
 		left = right = -1;
 	else{
-		if (right == MAX - 1)
+		if (right == 0)
 			right == MAX - 1;
 		else
-			right ++;	
+			right --;	
 	}
 }
 

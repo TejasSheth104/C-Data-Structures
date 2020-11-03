@@ -17,4 +17,3 @@ int handshakes(int n) {
 		return (handshakes(n-1) + (n-1));
 }
 
-

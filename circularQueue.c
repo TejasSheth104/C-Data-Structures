@@ -2,7 +2,7 @@
 // mask the disadvantage of Linear Queue
 
 #include<stdio.h>
-#define MAX 5
+#define MAX 3
 int queue[MAX];
 int front = -1, rear = -1;
 
@@ -61,7 +61,7 @@ void deque(){
 		printf("\n UNDERFLOW ");
 		return ;
 	}
-	printf("Value Deleted is %d", queue[front]);
+	printf("\nValue Deleted is %d", queue[front]);
 	if (front == rear)
 		front = rear = -1;
 	else{
@@ -73,7 +73,7 @@ void deque(){
 }
 
 void peek(){
-	if (front == -1 || front > rear){
+	if (front == -1){
 		printf("\n QUEUE IS EMPTY ");
 		return ;
 	}
@@ -84,11 +84,10 @@ void peek(){
 void display(){
 	int i;
 	printf("\n");
-	if (front == -1 || front > rear){
+	if (front == -1){
 		printf("\n QUEUE IS EMPTY ");
 		return ;
 	}
-	else{
 		if (front < rear){
 			for (i = front; i <= rear; i++)
 				printf("\t %d", queue[i]);
@@ -99,7 +98,6 @@ void display(){
 			for (i = 0; i <= rear; i++)
 				printf("\t %d", queue[i]);
 		}
-	}
 }
 
 

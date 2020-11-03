@@ -64,7 +64,6 @@ void insert_pri(){
 
 void delete_highest_pri(){
 	int smallest, index = 0, i;
-//	int val;
 	smallest = pri_queue[0];
 	
 	if (front == -1 && rear == -1){
@@ -80,31 +79,11 @@ void delete_highest_pri(){
 	}
 
 	printf("\nElement with Highest Priority = %d", queue[index]);
-
-//	if (front > rear){
-//		for (i = index; i < MAX - 1; i++){
-//			queue[i] = queue[i+1];
-//			pri_queue[i] = pri_queue[i+1];
-//		}
-//		queue[MAX-1] = queue[0];
-//		pri_queue[MAX-1] = pri_queue[0];
-//		for (i = 0; i <= rear; i++){
-//			queue[i] = queue[i+1];
-//			pri_queue[i] = pri_queue[i+1];
-//		}
-//		
-//		if (rear == 0)
-//			rear = MAX - 1;
-//		else
-//			rear--;
-//	}
-//	else{
 	for (i = index; i <= rear; i++){
 		queue[i] = queue[i+1];
 		pri_queue[i] = pri_queue[i+1];
 	}
 	rear--;
-//	}
 	if (front > rear)
 		front = rear = -1;
 }
@@ -114,19 +93,9 @@ void display_pri(){
 	if (front == -1 && rear == -1) //|| front == rear)
 		printf("\n\tQUEUE IS EMPTY.");
 	else{
-//		if (front > rear){
-//			for (i = front; i < MAX; i++){
-//				printf("\n\t%d,\t p- %d", queue[i], pri_queue[i]);
-//			}
-//			for (i = 0; i <= rear; i++){
-//				printf("\n\t%d,\t p- %d", queue[i], pri_queue[i]);
-//			}
-//		}
-//		else{
 		for (i = front; i <= rear; i++){
 			printf("\n\t%d,\t p- %d", queue[i], pri_queue[i]);
 		}
-//		}
 	}
 	
 }
