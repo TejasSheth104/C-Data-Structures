@@ -66,7 +66,7 @@ struct stack *push(struct stack *top){
 struct stack *pop(struct stack *top){
 	struct stack *temp;
 	if (top == NULL)
-		printf("\tSTACK UNDERFLOW.\n");
+		printf("\n\tSTACK UNDERFLOW.\n");
 	else{
 		temp = top;
 		printf("\nElement Popped Out is %d.\n", top->data);
@@ -78,7 +78,7 @@ struct stack *pop(struct stack *top){
 
 void peek(struct stack *top){
 	if (top == NULL)
-		printf("\tSTACK UNDERFLOW.\n");
+		printf("\n\tSTACK UNDERFLOW.\n");
 	else
 		printf("\nElement at Top of Stack is %d.\n", top->data);
 }
@@ -86,7 +86,7 @@ void peek(struct stack *top){
 struct stack *display(struct stack *top){
 	struct stack *ptr;
 	if (top == NULL)
-		printf("\tSTACK UNDERFLOW.\n");
+		printf("\n\tSTACK UNDERFLOW.\n");
 	else{
 		printf("\n");
 		ptr = top;

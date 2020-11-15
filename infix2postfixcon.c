@@ -40,7 +40,6 @@ void Infix2Postfix(char source[], char target[]){
 			}
 			if (top == -1){
 				printf("\nInvalid Expression");
-				exit(-1);
 			}
 			temp = pop(st);		// pop out left over ( parenthesis.
 			i++;
@@ -60,7 +59,6 @@ void Infix2Postfix(char source[], char target[]){
 		}
 		else{
 			printf("\nIncorrect Elements in Expression.");
-			exit(-2);
 		}
 	}
 	

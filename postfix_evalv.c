@@ -16,7 +16,7 @@ int main(){
 	printf("\nEnter any Postfix Expression - ");
 	gets(exp);
 	val = evalPostfix(exp);
-	printf("\nVAlue of the PostFix Expression is - %.2f", val);
+	printf("\nValue of the PostFix Expression is -> %.2f", val);
 	return 0;
 }
 

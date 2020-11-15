@@ -219,6 +219,7 @@ struct node *delete_beg(struct node *start){
 	struct node *ptr;
 	ptr = start;
 	start = start->next;
+	printf("\nElement deleted - %d\n", ptr->data);
 	free(ptr);
 	return start;
 }
@@ -231,6 +232,7 @@ struct node *delete_end(struct node *start){
 		ptr = ptr->next;
 	}
 	preptr->next = NULL;
+	printf("\nElement deleted - %d\n", ptr->data);
 	free(ptr);
 	return start;
 }
