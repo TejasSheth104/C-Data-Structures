@@ -53,8 +53,6 @@ void insert_pri(){
 		printf("\n\tQUEUE IS FULL.");
 		return;
 	}
-//	else if (front != 0 && rear == MAX - 1)
-//		rear = 0;
 	else
 		rear ++;
 	
