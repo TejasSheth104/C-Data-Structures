@@ -145,5 +145,5 @@ void main(){
      for(i = 4; i>= 0; i--){
            printf("%d",anumcp[i]);
      }
-
+return 0;
 }
